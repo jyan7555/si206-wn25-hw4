@@ -370,7 +370,7 @@ class TestAllMethods(unittest.TestCase):
 
     def test_place_order(self):
         """
-        Test different order placement scenarios.
+        Test different order placement scenarios. 
         
         This test method should verify three scenarios:
         1. Orders when customer has insufficient funds
@@ -382,6 +382,10 @@ class TestAllMethods(unittest.TestCase):
         - Customer doesn't have enough money
         - Restaurant doesn't have enough inventory
         - Restaurant doesn't carry the ordered item
+
+        NOTE: To test the place_order() method, you need to create an order dictionary that you then pass into place_order(). 
+        For more information, see the assignment instructions.
+        
         """
         # Some helpful setup code is provided - you'll need to add the test cases:
         
