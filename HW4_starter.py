@@ -75,6 +75,9 @@ class Customer:
 class MenuItem:
     """
     A class representing an item that can be ordered from a restaurant.
+
+    Attributes:
+        name (str): The name of the menu item
     """
     
     def __init__(self, name):
