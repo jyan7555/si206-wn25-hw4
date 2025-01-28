@@ -371,6 +371,40 @@ class TestAllMethods(unittest.TestCase):
         }
         self.assertFalse(self.diner.process_order(order_unavailable))
 
+    def test_menuitem_equality(self):
+        """Test that different MenuItem instances with the same name are equal."""
+        burger1 = MenuItem("Cheeseburger")
+        burger2 = MenuItem("Cheeseburger")
+        fries1 = MenuItem("Fries")
+        fries2 = MenuItem("Fries")
+
+        # Check equality
+        self.assertEqual(burger1, burger2)
+        self.assertEqual(fries1, fries2)
+
+        # Check hash equality
+        self.assertEqual(hash(burger1), hash(burger2))
+        self.assertEqual(hash(fries1), hash(fries2))
+
+        # Use different instances as keys in a dictionary
+        menu = {}
+        menu[burger1] = 10.99
+        menu[fries1] = 2.99
+
+        # Access using different instances
+        self.assertIn(burger2, menu)
+        self.assertIn(fries2, menu)
+        self.assertEqual(menu[burger2], 10.99)
+        self.assertEqual(menu[fries2], 2.99)
+
+        # Update price using burger2
+        menu[burger2] = 11.99
+        self.assertEqual(menu[burger1], 11.99)
+        self.assertEqual(menu[burger2], 11.99)
+
+        # The length should be 2
+        self.assertEqual(len(menu), 2)
+        
     def test_place_order(self):
         """
         Test different order placement scenarios. 
@@ -446,39 +480,7 @@ class TestAllMethods(unittest.TestCase):
         self.assertAlmostEqual(customer.account_balance, 271.2, places=2) 
         self.assertAlmostEqual(restaurant.income, 25.4, places=2) 
         
-    def test_menuitem_equality(self):
-        """Test that different MenuItem instances with the same name are equal."""
-        burger1 = MenuItem("Cheeseburger")
-        burger2 = MenuItem("Cheeseburger")
-        fries1 = MenuItem("Fries")
-        fries2 = MenuItem("Fries")
 
-        # Check equality
-        self.assertEqual(burger1, burger2)
-        self.assertEqual(fries1, fries2)
-
-        # Check hash equality
-        self.assertEqual(hash(burger1), hash(burger2))
-        self.assertEqual(hash(fries1), hash(fries2))
-
-        # Use different instances as keys in a dictionary
-        menu = {}
-        menu[burger1] = 10.99
-        menu[fries1] = 2.99
-
-        # Access using different instances
-        self.assertIn(burger2, menu)
-        self.assertIn(fries2, menu)
-        self.assertEqual(menu[burger2], 10.99)
-        self.assertEqual(menu[fries2], 2.99)
-
-        # Update price using burger2
-        menu[burger2] = 11.99
-        self.assertEqual(menu[burger1], 11.99)
-        self.assertEqual(menu[burger2], 11.99)
-
-        # The length should be 2
-        self.assertEqual(len(menu), 2)
 
 def main():
     """Run the tests and print a summary."""
