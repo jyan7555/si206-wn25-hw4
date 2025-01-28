@@ -5,12 +5,12 @@ To make Git commits and push changes to your repository:
 ---
 
 2. Then add this file to the staging area for a commit use:
-    - ```git add discussion3_starter.py OR git add .```
+    - ```git add HW4_starter.py OR git add .```
 ---
 
 3. To commit use:
     - ```git commit -m "[insert commit message]"```
-    - Your commit message should indicate what changes you made. For example, ```git commit -m "Completed __init__ method"```
+    - Your commit message should indicate what changes you made. For example, ```git commit -m "Completed place_order() method"```
 ---
 
 4. Finally, remember to push your commits to GitHub:
